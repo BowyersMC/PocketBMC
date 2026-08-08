@@ -10,3 +10,6 @@ just.config.ts
 package-lock.json
 package.json
 tsconfig.json
+
+# private-api files
+scripts/api/*
