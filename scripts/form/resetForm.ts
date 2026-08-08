@@ -61,7 +61,7 @@ export function resetForm() {
     },
     no: {
       text: "いいえ",
-      handler() {}
+      handler() { }
     }
   });
 }

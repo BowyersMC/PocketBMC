@@ -61,9 +61,9 @@ export class AirRefraction extends Movement {
 
   fetchSettings(): Record<string, unknown> {
     return {
-        enabled: world.getDynamicProperty("AIR_REFRACTION.ENABLED") as boolean,
-        multiplier: (world.getDynamicProperty("AIR_REFRACTION.MULTIPLIER") ?? 1.45) as number,
-        angle: (world.getDynamicProperty("AIR_REFRACTION.ANGLE") ?? 85) as number,
+      enabled: world.getDynamicProperty("AIR_REFRACTION.ENABLED") as boolean,
+      multiplier: (world.getDynamicProperty("AIR_REFRACTION.MULTIPLIER") ?? 1.45) as number,
+      angle: (world.getDynamicProperty("AIR_REFRACTION.ANGLE") ?? 85) as number,
     };
   }
 }

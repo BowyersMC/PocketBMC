@@ -55,9 +55,9 @@ export class Updraft extends Movement {
 
   fetchSettings(): Record<string, unknown> {
     return {
-        enabled: world.getDynamicProperty("UPDRAFT.ENABLED") as boolean,
-        horizontalMultiplier: (world.getDynamicProperty("UPDRAFT.HORIZONTAL_MULTIPLIER") ?? 0.5) as number,
-        verticalMultiplier: (world.getDynamicProperty("UPDRAFT.VERTICAL_MULTIPLIER") ?? 1.3) as number,
+      enabled: world.getDynamicProperty("UPDRAFT.ENABLED") as boolean,
+      horizontalMultiplier: (world.getDynamicProperty("UPDRAFT.HORIZONTAL_MULTIPLIER") ?? 0.5) as number,
+      verticalMultiplier: (world.getDynamicProperty("UPDRAFT.VERTICAL_MULTIPLIER") ?? 1.3) as number,
     };
   }
 }

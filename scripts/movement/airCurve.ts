@@ -69,10 +69,10 @@ export class AirCurve extends Movement {
 
   fetchSettings(): Record<string, unknown> {
     return {
-        enabled: world.getDynamicProperty("AIR_CURVE.ENABLED") as boolean,
-        horizontalMultiplier: (world.getDynamicProperty("AIR_CURVE.HORIZONTAL_MULTIPLIER") ?? 1.2) as number,
-        verticalMultiplier: (world.getDynamicProperty("AIR_CURVE.VERTICAL_MULTIPLIER") ?? 0.15) as number,
-        responseCount: (world.getDynamicProperty("AIR_CURVE.RESPONSE_COUNT") ?? 10) as number,
+      enabled: world.getDynamicProperty("AIR_CURVE.ENABLED") as boolean,
+      horizontalMultiplier: (world.getDynamicProperty("AIR_CURVE.HORIZONTAL_MULTIPLIER") ?? 1.2) as number,
+      verticalMultiplier: (world.getDynamicProperty("AIR_CURVE.VERTICAL_MULTIPLIER") ?? 0.15) as number,
+      responseCount: (world.getDynamicProperty("AIR_CURVE.RESPONSE_COUNT") ?? 10) as number,
     };
   }
 }

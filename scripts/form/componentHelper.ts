@@ -54,7 +54,7 @@ export function createToggle(key: string, label: string) {
  * @param placeholder
  * @param validator
  */
-export function createTextField(key: string, label: string, placeholder: string, validator: (newValue: any)=>boolean) {
+export function createTextField(key: string, label: string, placeholder: string, validator: (newValue: any) => boolean) {
   return textField({
     label: label,
     placeholder: placeholder,
