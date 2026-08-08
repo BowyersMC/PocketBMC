@@ -1,7 +1,7 @@
 # PocketBMC
 BowyersMCの一部キャラコンと一部特殊要素をを実装したビヘイビアーパック。  
 基本的なものから詳細な点まで自由に設定できるようにしています。  
-<img width="90%" alt="image" src="https://github.com/user-attachments/assets/2e4aa95d-274a-40b7-bb19-04d81fd48c68" />
+<img width="90%" alt="image" src="https://github.com/user-attachments/assets/b8513863-386b-4e19-ab1f-ff8bb0918856" />
 
 <br />
 &nbsp;
