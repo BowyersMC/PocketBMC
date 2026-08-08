@@ -46,26 +46,30 @@ export abstract class Movement {
   }
 
   isStairs(block: Block): boolean {
-      return /_stairs$/.test(block.typeId);
+    return /_stairs$/.test(block.typeId);
   }
 
   isSlab(block: Block): boolean {
-      return /_slab$/.test(block.typeId);
+    return /_slab$/.test(block.typeId);
   }
 
   isFence(block: Block): boolean {
-      return /_fence$/.test(block.typeId);
+    return /_fence$/.test(block.typeId);
   }
 
   isWall(block: Block): boolean {
-      return /_wall$/.test(block.typeId);
+    return /_wall$/.test(block.typeId);
   }
 
   isDoor(block: Block): boolean {
-      return /_door$/.test(block.typeId);
+    return /_door$/.test(block.typeId);
   }
 
   isLeaves(block: Block): boolean {
-      return /_leaves$/.test(block.typeId);
+    return /_leaves$/.test(block.typeId);
+  }
+
+  isCarpet(block: Block): boolean {
+    return /_carpet$/.test(block.typeId);
   }
 }

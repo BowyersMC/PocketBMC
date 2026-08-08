@@ -47,7 +47,7 @@ export class FastStraight extends Movement {
       const xzMultiplier = 0.45;
       const pos = Vector3.fromBDS({
         x: location.x - Math.sin(yaw * Math.PI / 180) * xzMultiplier,
-        y: location.y - 0.15,
+        y: location.y,
         z: location.z + Math.cos(yaw * Math.PI / 180) * xzMultiplier
       });
       const block = player.dimension.getBlock(pos);
@@ -119,6 +119,7 @@ export class FastStraight extends Movement {
     if (this.isWall(block)) return true;
     if (this.isDoor(block)) return true;
     if (this.isLeaves(block)) return true;
+    if (this.isCarpet(block)) return false;
     if (block.typeId === "minecraft:ladder") return false;
     if (block.typeId === "minecraft:vine") return false;
     if (block.isAir || block.isLiquid) return false;
