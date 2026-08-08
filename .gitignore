@@ -1,0 +1,11 @@
+.vscode/
+
+# cotta environment files
+dist/
+lib/
+.env
+eslint.config.mjs
+just.config.ts
+package-lock.json
+package.json
+tsconfig.json
