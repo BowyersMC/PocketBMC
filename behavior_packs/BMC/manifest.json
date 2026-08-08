@@ -1,0 +1,42 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "BMC BP",
+    "description": "BowyersMC Re-production Project",
+    "uuid": "ea236be9-e06a-41e4-bb9e-deca25a5f2e1",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      40
+    ]
+  },
+  "modules": [
+    {
+      "description": "BowyersMC Re-production Project",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "b5c5188f-5b1f-4994-854b-9a37c52a26a0",
+      "version": [
+        1,
+        0,
+        0
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.9.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.1.0"
+    }
+  ]
+}

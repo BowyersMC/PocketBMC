@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "BMC RP",
+    "description": "BowyersMC Re-production Project",
+    "uuid": "f5f9236d-ab2c-490b-a612-4463469bc13e",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      20,
+      40
+    ]
+  },
+  "modules": [
+    {
+      "description": "BowyersMC Re-production Project",
+      "type": "resources",
+      "uuid": "efcd2b25-714d-4acc-8a7c-5f95ec129743",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "ea236be9-e06a-41e4-bb9e-deca25a5f2e1",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}
