@@ -17,37 +17,25 @@ import { createModalForm } from "@api/core";
 import { home } from "../homeForm";
 import { createTextField, createToggle } from "../componentHelper";
 
-export function fastStraightForm() {
+export function glassPaneForm() {
   return createModalForm({
-    title: "BMC > §lFastStraight§r",
-    previousForm: home("movement"),
+    title: "BMC > §lGlass Pane§r",
+    previousForm: home("utilities"),
     components: [
       createToggle(
-        "FAST_STRAIGHT.ENABLED",
-        "ファストストレートの有効化"
+        "GLASS_PANE.ENABLED",
+        "板ガラスの破壊及び自動修復処理の有効化"
       ),
       createTextField(
-        "FAST_STRAIGHT.COST_FOOD",
-        "消費する空腹度",
-        "12",
-        (newValue) => !Number.isNaN(Number(newValue))
+        "GLASS_PANE.TYPE",
+        "板ガラス (例: minecraft:glass_pane)",
+        "minecraft:glass_pane",
+        (newValue) => /^minecraft:([a-z_]+_)?glass_pane$/.test(newValue)
       ),
       createTextField(
-        "FAST_STRAIGHT.RECOVERY_FOOD",
-        "1ティックごとの空腹度回復量",
-        "0.25",
-        (newValue) => !Number.isNaN(Number(newValue))
-      ),
-      createTextField(
-        "FAST_STRAIGHT.HORIZONTAL_MULTIPLIER",
-        "水平方向の加速倍率値",
-        "2.575",
-        (newValue) => !Number.isNaN(Number(newValue))
-      ),
-      createTextField(
-        "FAST_STRAIGHT.VERTICAL_MULTIPLIER",
-        "垂直方向の加速倍率値",
-        "0.585",
+        "GLASS_PANE.RECOVERY_TICKS",
+        "修復されるまでにかかるティック",
+        "1200",
         (newValue) => !Number.isNaN(Number(newValue))
       )
     ]

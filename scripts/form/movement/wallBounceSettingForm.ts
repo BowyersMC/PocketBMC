@@ -20,7 +20,7 @@ import { createTextField, createToggle } from "../componentHelper";
 export function wallBounceForm() {
   return createModalForm({
     title: "BMC > §lWallBounce§r",
-    previousForm: home(),
+    previousForm: home("movement"),
     components: [
       createToggle(
         "WALL_BOUNCE.ENABLED",

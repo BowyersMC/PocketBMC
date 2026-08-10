@@ -65,7 +65,7 @@ EventManager.registerAfter("itemUse", {
       const player = event.source;
       if (player.playerPermissionLevel !== PlayerPermissionLevel.Operator) return;
 
-      home().send(player);
+      home("movement").send(player);
     }
   },
   priority: Priority.HIGHEST,

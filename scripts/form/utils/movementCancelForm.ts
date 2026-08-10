@@ -17,38 +17,20 @@ import { createModalForm } from "@api/core";
 import { home } from "../homeForm";
 import { createTextField, createToggle } from "../componentHelper";
 
-export function airCurveForm() {
+export function movementCancelEffectForm() {
   return createModalForm({
-    title: "BMC > §lAirCurve§r",
-    previousForm: home("movement"),
+    title: "BMC > §lMovement Cancel Effect§r",
+    previousForm: home("utilities"),
     components: [
       createToggle(
-        "AIR_CURVE.ENABLED",
-        "エアカーブの有効化"
+        "MOVEMENT_CANCEL_EFFECT.ENABLED",
+        "キャラコン無効化エフェクトの有効化"
       ),
       createTextField(
-        "AIR_CURVE.BLOCK",
-        "応答するブロック (例: minecraft:diamond_block)",
-        "minecraft:diamond_block",
+        "MOVEMENT_CANCEL_EFFECT.EFFECT_TYPE",
+        "エフェクト (例: minecraft:bad_omen)",
+        "minecraft:bad_omen",
         (newValue) => /^minecraft:[a-z0-9_]+$/.test(newValue)
-      ),
-      createTextField(
-        "AIR_CURVE.HORIZONTAL_MULTIPLIER",
-        "水平方向の加速倍率値",
-        "1.2",
-        (newValue) => !Number.isNaN(Number(newValue))
-      ),
-      createTextField(
-        "AIR_CURVE.VERTICAL_MULTIPLIER",
-        "垂直方向の加速倍率値",
-        "0.15",
-        (newValue) => !Number.isNaN(Number(newValue))
-      ),
-      createTextField(
-        "AIR_CURVE.RESPONSE_COUNT",
-        "加速度付与の試行回数",
-        "10",
-        (newValue) => Number.isInteger(Number(newValue))
       )
     ]
   });

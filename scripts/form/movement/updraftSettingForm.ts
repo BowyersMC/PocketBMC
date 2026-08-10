@@ -20,7 +20,7 @@ import { createTextField, createToggle } from "../componentHelper";
 export function updraftForm() {
   return createModalForm({
     title: "BMC > §lUpdraft§r",
-    previousForm: home(),
+    previousForm: home("movement"),
     components: [
       createToggle(
         "UPDRAFT.ENABLED",
@@ -30,7 +30,7 @@ export function updraftForm() {
         "UPDRAFT.BLOCK",
         "応答するブロック (例: minecraft:emerald_block)",
         "minecraft:emerald_block",
-        (newValue) => /^[^\d]+$/.test(newValue)
+        (newValue) => /^minecraft:[a-z0-9_]+$/.test(newValue)
       ),
       createTextField(
         "UPDRAFT.HORIZONTAL_MULTIPLIER",
