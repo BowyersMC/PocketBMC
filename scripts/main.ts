@@ -14,8 +14,7 @@
  *
  */
 import { system, Vector3, world } from "@minecraft/server";
-
-type DynamicPropertyType = Record<string, boolean | number | string | Vector3 | undefined>;
+import { DynamicPropertyType } from "./type/types";
 
 /**
  * キャラコンの初期設定
@@ -29,6 +28,7 @@ export const defaultMovementConfig: DynamicPropertyType = {
   "WALL_BOUNCE.HORIZONTAL_MULTIPLIER": 1.825,
   "WALL_BOUNCE.VERTICAL_MULTIPLIER": 0.775,
   "WALL_BOUNCE.WAIT_TICKS": 5,
+  "WALL_BOUNCE.IGNORE_EFFECT_TYPE": "",
 
   "FAST_STRAIGHT.ENABLED": true,
   "FAST_STRAIGHT.COST_FOOD": 12,
@@ -67,9 +67,6 @@ export const defaultUtilitiesConfig: DynamicPropertyType = {
   "ARMOR.TOLERANCE.IRON": -1,
   "ARMOR.TOLERANCE.DIAMOND": -1,
   "ARMOR.TOLERANCE.NETHERITE": -1,
-
-  "MOVEMENT_CANCEL_EFFECT.ENABLED": false,
-  "MOVEMENT_CANCEL_EFFECT.EFFECT_TYPE": "minecraft:bad_omen",
 
   "GLASS_PANE.ENABLED": false,
   "GLASS_PANE.TYPE": "minecraft:glass_pane",

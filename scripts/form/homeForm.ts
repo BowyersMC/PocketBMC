@@ -23,7 +23,6 @@ import { fastStraightForm } from "./movement/fastStraightSettingForm";
 import { resetForm } from "./resetForm";
 import { armorForm } from "./utils/armorForm";
 import { glassPaneForm } from "./utils/glassPaneForm";
-import { movementCancelEffectForm } from "./utils/movementCancelForm";
 
 export function home(type: BMCOptType) {
   let buttons;
@@ -89,13 +88,6 @@ export function home(type: BMCOptType) {
           iconPath: "textures/blocks/glass",
           handler(player) {
             glassPaneForm().send(player);
-          },
-        }),
-        button({
-          text: "Movement Cancel Effect",
-          iconPath: "textures/ui/slowness_effect",
-          handler(player) {
-            movementCancelEffectForm().send(player);
           },
         }),
         button({

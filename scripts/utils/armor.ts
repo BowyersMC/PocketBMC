@@ -13,7 +13,7 @@
  * このプログラムは非公式サーバーソフトウェアPocketMine-MPで稼働していたBowyersMCをScriptAPIに移植したものです。
  *
  */
-import { ItemDurabilityComponent, ItemStack, world } from "@minecraft/server";
+import { ItemStack, world } from "@minecraft/server";
 
 export abstract class Armor {
   protected static registry: Record<string, new (armor: ItemStack) => Armor> = {};
@@ -42,12 +42,6 @@ export abstract class Armor {
     const ArmorClass = this.registry[itemStack.typeId];
     if (!ArmorClass) return undefined;
 
-    // unbreakableじゃなければ属性付与
-    const component = itemStack.getComponent("minecraft:durability");
-    if (component && !component?.unbreakable) {
-      component.unbreakable = true;
-    }
-
     // インスタンス化時に itemStack を引数として渡す
     return new ArmorClass(itemStack);
   }
@@ -57,6 +51,7 @@ export abstract class Armor {
    */
   decreaseDurability(): ItemStack | undefined {
     if (!this.armor) return undefined;
+    if (this.TOLERANCE == -1) return this.armor;
 
     // 耐えられる回数のカウント
     let remainingHits = (this.armor.getDynamicProperty(this.TOLERANCE_KEY) as number) ?? this.TOLERANCE;

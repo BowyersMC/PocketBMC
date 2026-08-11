@@ -15,17 +15,30 @@
  */
 import { world } from "@minecraft/server";
 import { createMessageForm } from "@api/core";
-import { defaultMovementConfig } from "../main";
+import { defaultMovementConfig, defaultUtilitiesConfig } from "../main";
 import { BMCOptType } from "../type/types";
 
 export function resetForm(type: BMCOptType) {
+  let typeName;
+  let config;
+  switch (type) {
+    case "movement":
+      typeName = "ムーブメント";
+      config = defaultMovementConfig;
+      break;
+
+    case "utilities":
+      typeName = "ユーティリティ要素";
+      config = defaultUtilitiesConfig;
+      break;
+  }
   return createMessageForm({
     title: "BMC > §lReset§r",
-    body: "ムーブメント設定を初期化しますか？",
+    body: typeName + "の設定を初期化しますか？",
     yes: {
       text: "はい",
       handler(player) {
-        world.setDynamicProperties(defaultMovementConfig);
+        world.setDynamicProperties(config);
         player.sendMessage("データを初期化しました");
       }
     },
