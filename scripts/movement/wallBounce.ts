@@ -22,6 +22,12 @@ export class WallBounce extends Movement {
     const settings = this.fetchSettings();
     if (!settings.enabled) return;
 
+    // 無効化エフェクトが付与されていれば無視
+    if (settings.ignoreEffectType !== "") {
+      const effectType = settings.ignoreEffectType as string;
+      if (player.getEffect(effectType)?.isValid) return;
+    }
+
     const hungerComponent = player.getComponent("minecraft:player.hunger");
     const costFood = settings.costFood as number;
 
@@ -109,7 +115,8 @@ export class WallBounce extends Movement {
       recoveryFood: (world.getDynamicProperty("WALL_BOUNCE.RECOVERY_FOOD") ?? 0.25) as number,
       horizontalMultiplier: (world.getDynamicProperty("WALL_BOUNCE.HORIZONTAL_MULTIPLIER") ?? 1.825) as number,
       verticalMultiplier: (world.getDynamicProperty("WALL_BOUNCE.VERTICAL_MULTIPLIER") ?? 0.775) as number,
-      waitTicks: (world.getDynamicProperty("WALL_BOUNCE.WAIT_TICKS") ?? 5) as number
+      waitTicks: (world.getDynamicProperty("WALL_BOUNCE.WAIT_TICKS") ?? 5) as number,
+      ignoreEffectType: (world.getDynamicProperty("WALL_BOUNCE.IGNORE_EFFECT_TYPE") ?? "") as string
     };
   }
 }

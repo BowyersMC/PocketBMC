@@ -20,7 +20,7 @@ import { createTextField, createToggle } from "../componentHelper";
 export function airCurveForm() {
   return createModalForm({
     title: "BMC > §lAirCurve§r",
-    previousForm: home(),
+    previousForm: home("movement"),
     components: [
       createToggle(
         "AIR_CURVE.ENABLED",
@@ -30,7 +30,7 @@ export function airCurveForm() {
         "AIR_CURVE.BLOCK",
         "応答するブロック (例: minecraft:diamond_block)",
         "minecraft:diamond_block",
-        (newValue) => /^[^\d]+$/.test(newValue)
+        (newValue) => /^minecraft:[a-z0-9_]+$/.test(newValue)
       ),
       createTextField(
         "AIR_CURVE.HORIZONTAL_MULTIPLIER",

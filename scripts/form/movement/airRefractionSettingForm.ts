@@ -20,7 +20,7 @@ import { createTextField, createToggle } from "../componentHelper";
 export function airRefractionForm() {
   return createModalForm({
     title: "BMC > §lAirRefraction§r",
-    previousForm: home(),
+    previousForm: home("movement"),
     components: [
       createToggle(
         "AIR_REFRACTION.ENABLED",

@@ -20,7 +20,7 @@ import { createTextField, createToggle } from "../componentHelper";
 export function wallBounceForm() {
   return createModalForm({
     title: "BMC > §lWallBounce§r",
-    previousForm: home(),
+    previousForm: home("movement"),
     components: [
       createToggle(
         "WALL_BOUNCE.ENABLED",
@@ -55,6 +55,12 @@ export function wallBounceForm() {
         "連発防止の待機ティック",
         "5",
         (newValue) => Number.isInteger(Number(newValue))
+      ),
+      createTextField(
+        "WALL_BOUNCE.IGNORE_EFFECT_TYPE",
+        "無効化対象のエフェクト (例: minecraft:bad_omen)",
+        "minecraft:bad_omen",
+        (newValue) => newValue == "" || /^minecraft:[a-z0-9_]+$/.test(newValue)
       )
     ]
   });

@@ -15,7 +15,7 @@
  *
  */
 import { world } from "@minecraft/server";
-import { textField, toggle } from "@api/core";
+import { slider, textField, toggle } from "@api/core";
 
 /**
  * 変更通知のメッセージ取得
@@ -81,3 +81,27 @@ export function createTextField(key: string, label: string, placeholder: string,
   });
 }
 
+/**
+ * ステップスライダー
+ * @param key
+ * @param label
+ * @param min
+ * @param max
+ * @param step
+ */
+export function createSlider(key: string, label: string, min: number, max: number, step: number = 1) {
+  return slider({
+    label: label,
+    min: min,
+    max: max,
+    step: step,
+    default: Number(world.getDynamicProperty(key)),
+    handler(player, value) {
+      const current = Number(world.getDynamicProperty(key));
+      if (current !== value) {
+        world.setDynamicProperty(key, value);
+        player.sendMessage(formatConfirmMessage(key, current, value));
+      }
+    }
+  });
+}

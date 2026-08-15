@@ -14,60 +14,95 @@
  *
  */
 import { button, createActionForm } from "@api/core";
+import { BMCOptType } from "../type/types";
 import { airCurveForm } from "./movement/airCurveSettingForm";
 import { updraftForm } from "./movement/updraftSettingForm";
 import { wallBounceForm } from "./movement/wallBounceSettingForm";
 import { airRefractionForm } from "./movement/airRefractionSettingForm";
 import { fastStraightForm } from "./movement/fastStraightSettingForm";
 import { resetForm } from "./resetForm";
+import { armorForm } from "./utils/armorForm";
+import { glassPaneForm } from "./utils/glassPaneForm";
 
-export function home() {
+export function home(type: BMCOptType) {
+  let buttons;
+  switch (type) {
+    case "movement":
+      buttons = [
+        button({
+          text: "WallBounce",
+          iconPath: "textures/ui/speed_effect",
+          handler(player) {
+            wallBounceForm().send(player);
+          },
+        }),
+        button({
+          text: "FastStraight",
+          iconPath: "textures/ui/wind_charged_effect",
+          handler(player) {
+            fastStraightForm().send(player);
+          },
+        }),
+        button({
+          text: "AirRefraction",
+          iconPath: "textures/ui/invisibility_effect",
+          handler(player) {
+            airRefractionForm().send(player);
+          },
+        }),
+        button({
+          text: "Updraft",
+          iconPath: "textures/ui/jump_boost_effect",
+          handler(player) {
+            updraftForm().send(player);
+          },
+        }),
+        button({
+          text: "AirCurve",
+          iconPath: "textures/ui/weaving_effect",
+          handler(player) {
+            airCurveForm().send(player);
+          },
+        }),
+        button({
+          text: "§l§c設定の初期化§r",
+          iconPath: "textures/ui/trash",
+          handler(player) {
+            resetForm(type).send(player);
+          },
+        }),
+      ];
+      break;
+
+    case "utilities":
+      buttons = [
+        button({
+          text: "BMC Armor",
+          iconPath: "textures/ui/armor_half",
+          handler(player) {
+            armorForm().send(player);
+          },
+        }),
+        button({
+          text: "BMC Glass Pane",
+          iconPath: "textures/blocks/glass",
+          handler(player) {
+            glassPaneForm().send(player);
+          },
+        }),
+        button({
+          text: "§l§c設定の初期化§r",
+          iconPath: "textures/ui/trash",
+          handler(player) {
+            resetForm(type).send(player);
+          },
+        }),
+      ];
+      break;
+  }
   return createActionForm({
     title: "§lBMC§r",
     body: "設定する項目を以下から選んでください",
-    buttons: [
-      button({
-        text: "WallBounce",
-        iconPath: "textures/ui/speed_effect",
-        handler(player) {
-          wallBounceForm().send(player);
-        },
-      }),
-      button({
-        text: "FastStraight",
-        iconPath: "textures/ui/wind_charged_effect",
-        handler(player) {
-          fastStraightForm().send(player);
-        },
-      }),
-      button({
-        text: "AirRefraction",
-        iconPath: "textures/ui/invisibility_effect",
-        handler(player) {
-          airRefractionForm().send(player);
-        },
-      }),
-      button({
-        text: "Updraft",
-        iconPath: "textures/ui/jump_boost_effect",
-        handler(player) {
-          updraftForm().send(player);
-        },
-      }),
-      button({
-        text: "AirCurve",
-        iconPath: "textures/ui/weaving_effect",
-        handler(player) {
-          airCurveForm().send(player);
-        },
-      }),
-      button({
-        text: "§l§c設定の初期化§r",
-        iconPath: "textures/ui/trash",
-        handler(player) {
-          resetForm().send(player);
-        },
-      }),
-    ]
+    buttons: buttons
   });
 }

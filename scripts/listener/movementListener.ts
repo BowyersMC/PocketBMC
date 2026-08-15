@@ -64,8 +64,9 @@ EventManager.registerAfter("itemUse", {
     if (item && item.typeId === "minecraft:nether_star") {
       const player = event.source;
       if (player.playerPermissionLevel !== PlayerPermissionLevel.Operator) return;
+      if (player.isSneaking) return;
 
-      home().send(player);
+      home("movement").send(player);
     }
   },
   priority: Priority.HIGHEST,
