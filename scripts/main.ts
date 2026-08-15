@@ -13,7 +13,7 @@
  * このプログラムは非公式サーバーソフトウェアPocketMine-MPで稼働していたBowyersMCをScriptAPIに移植したものです。
  *
  */
-import { system, Vector3, world } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 import { DynamicPropertyType } from "./type/types";
 
 /**
@@ -67,6 +67,12 @@ export const defaultUtilitiesConfig: DynamicPropertyType = {
   "ARMOR.TOLERANCE.IRON": -1,
   "ARMOR.TOLERANCE.DIAMOND": -1,
   "ARMOR.TOLERANCE.NETHERITE": -1,
+  "ARMOR.SOUND.ENABLED": false,
+  "ARMOR.SOUND.TYPE_EQUIP": "random.anvil_use",
+  "ARMOR.SOUND.TYPE_BURST": "mob.zombie.woodbreak",
+  "ARMOR.SOUND.SEND_TO_EQUIP": true,
+  "ARMOR.SOUND.SEND_TO_ATTACKER": true,
+  "ARMOR.SOUND.SEND_TO_VICTIM": true,
 
   "GLASS_PANE.ENABLED": false,
   "GLASS_PANE.TYPE": "minecraft:glass_pane",

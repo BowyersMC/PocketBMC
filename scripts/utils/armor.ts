@@ -69,6 +69,9 @@ export abstract class Armor {
   }
 }
 
+/**
+ * 革のチェストプレート
+ */
 export class LeatherArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:leather_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.LEATHER") ?? -1) as number;
@@ -81,6 +84,9 @@ export class LeatherArmor extends Armor {
   static { Armor.register("minecraft:leather_chestplate", this); }
 }
 
+/**
+ * 金のチェストプレート
+ */
 export class GoldenArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:golden_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.GOLDEN") ?? -1) as number;
@@ -93,6 +99,9 @@ export class GoldenArmor extends Armor {
   static { Armor.register("minecraft:golden_chestplate", this); }
 }
 
+/**
+ * 銅のチェストプレート
+ */
 export class CopperArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:copper_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.COPPER") ?? -1) as number;
@@ -105,6 +114,9 @@ export class CopperArmor extends Armor {
   static { Armor.register("minecraft:copper_chestplate", this); }
 }
 
+/**
+ * 鎖のチェストプレート
+ */
 export class ChainmailArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:chainmail_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.CHAINMAIL") ?? -1) as number;
@@ -117,6 +129,9 @@ export class ChainmailArmor extends Armor {
   static { Armor.register("minecraft:chainmail_chestplate", this); }
 }
 
+/**
+ * 鉄のチェストプレート
+ */
 export class IronArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:iron_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.IRON") ?? -1) as number;
@@ -129,6 +144,9 @@ export class IronArmor extends Armor {
   static { Armor.register("minecraft:iron_chestplate", this); }
 }
 
+/**
+ * ダイヤモンドのチェストプレート
+ */
 export class DiamondArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:diamond_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.DIAMOND") ?? -1) as number;
@@ -141,6 +159,9 @@ export class DiamondArmor extends Armor {
   static { Armor.register("minecraft:diamond_chestplate", this); }
 }
 
+/**
+ * ネザライトのチェストプレート
+ */
 export class NetheriteArmor extends Armor {
   protected ARMOR_TYPE: string = "minecraft:netherite_chestplate";
   protected TOLERANCE: number = (world.getDynamicProperty("ARMOR.TOLERANCE.NETHERITE") ?? -1) as number;

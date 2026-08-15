@@ -13,11 +13,30 @@
  * このプログラムは非公式サーバーソフトウェアPocketMine-MPで稼働していたBowyersMCをScriptAPIに移植したものです。
  *
  */
-import { BlockPermutation, EntityDamageCause, EquipmentSlot, PlayerPermissionLevel, system, world } from "@minecraft/server";
+import { BlockPermutation, EquipmentSlot, GameMode, Player, PlayerPermissionLevel, world } from "@minecraft/server";
 import { EventManager, Priority, repeating } from "@api/core";
 import { Armor } from "../utils/armor";
 import { blockRecovery as BR } from "../utils/blockRecovery";
 import { home } from "../form/homeForm";
+
+// 鎧装備の音声
+EventManager.registerAfter("itemUse", {
+  handler(event) {
+    const item = event.itemStack;
+    if (!item.typeId.includes("chestplate")) return;
+
+    const enabled = (world.getDynamicProperty("ARMOR.ENABLED") ?? false) as boolean;
+    const equipEnabled = (world.getDynamicProperty("ARMOR.SOUND.SEND_TO_EQUIP") ?? false) as boolean;
+    if (!enabled || !equipEnabled) return;
+
+    const player = event.source;
+    if (!player) return;
+
+    const soundName = world.getDynamicProperty("ARMOR.SOUND.TYPE_EQUIP") as string;
+    player.playSound(soundName, { location: player.location, volume: 0.9, pitch: 1.0 });
+  },
+  priority: Priority.LOWEST
+});
 
 // 攻撃を喰らった時に鎧の耐久値を削る
 EventManager.registerAfter("projectileHitEntity", {
@@ -25,12 +44,26 @@ EventManager.registerAfter("projectileHitEntity", {
     const enabled = (world.getDynamicProperty("ARMOR.ENABLED") ?? false) as boolean;
     if (!enabled) return;
 
-    if (event.projectile.typeId !== "minecraft:arrow") return;
+    const projectile = event.projectile;
+    if (projectile.typeId !== "minecraft:arrow") return;
 
     const entityHitInfo = event.getEntityHit();
     const entity = entityHitInfo.entity;
     if (!entity) return;
-    if (entity.typeId !== "minecraft:player") return;
+    if (entity instanceof Player && entity.getGameMode() == GameMode.Creative) return;
+
+    const soundEnabled = (world.getDynamicProperty("ARMOR.SOUND.ENABLED") ?? false) as boolean;
+    if (soundEnabled) {
+      const attacker = event.source;
+      const soundName = world.getDynamicProperty("ARMOR.SOUND.TYPE_BURST") as string;
+
+      if (entity instanceof Player && ((world.getDynamicProperty("ARMOR.SOUND.SEND_TO_VICTIM") ?? false) as boolean)) {
+        entity.playSound(soundName, { location: entity.location, volume: 0.9, pitch: 1.0 });
+      }
+      if (attacker instanceof Player && ((world.getDynamicProperty("ARMOR.SOUND.SEND_TO_ATTACKER") ?? false) as boolean)) {
+        attacker.playSound(soundName, { location: attacker.location, volume: 0.9, pitch: 1.0 });
+      }
+    }
 
     const itemStack = entity.getComponent("minecraft:equippable")?.getEquipmentSlot(EquipmentSlot.Chest).getItem();
     if (!itemStack) return;
